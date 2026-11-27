@@ -218,3 +218,40 @@
     object-position: center 38%;
   }
 }
+
+/* Equipe, galeria e linha do tempo — composição editorial Figma */
+.team{grid-template-columns:minmax(0,35%) minmax(0,65%);gap:clamp(22px,3vw,42px);align-items:center}
+.team>img{width:100%;height:clamp(300px,31vw,430px);object-fit:cover;object-position:center}
+.team-content{min-width:0}
+.team h2{margin:0 0 34px}
+.people-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 34px;font-size:15px}
+.people-grid p{margin:0}
+.section-heading{margin:44px 0 22px}
+.milestone-gallery{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:clamp(150px,17vw,230px) clamp(150px,17vw,230px);gap:8px;margin:0 0 30px}
+.milestone-gallery-item{min-width:0;min-height:0;overflow:hidden;background:#eee9e6}
+.milestone-gallery-item img{width:100%;height:100%;display:block;object-fit:cover}
+.milestone-gallery-placeholder{width:100%;height:100%;background:#eee9e6}
+.milestone-gallery-1{grid-column:1;grid-row:1}
+.milestone-gallery-2{grid-column:2;grid-row:1}
+.milestone-gallery-3{grid-column:1;grid-row:2}
+.milestone-gallery-4{grid-column:2;grid-row:2}
+.milestones{display:flex;flex-direction:column;gap:24px}
+.milestones article{display:grid;grid-template-columns:76px minmax(0,1fr);gap:20px;align-items:start;font-size:14px;line-height:1.55}
+.milestone-year{display:inline-block;background:var(--red);color:#fff;padding:5px 9px;font:700 13px var(--serif);text-align:center}
+.milestone-detail h3{font:700 17px var(--serif);margin:0 0 8px;text-transform:uppercase}
+.milestone-detail p{margin:0 0 8px}
+.milestone-detail ul{margin:8px 0 0;padding-left:19px}
+.red-band{width:100vw;max-width:100vw;position:relative;left:50%;transform:translateX(-50%);margin:28px 0;padding:20px max(5%,calc((100vw - 1320px)/2));}
+@media(max-width:760px){
+ .team{grid-template-columns:minmax(0,1fr);gap:18px}
+ .team>img{height:auto;aspect-ratio:1.12/1;object-fit:cover}
+ .team h2{margin:0 0 16px;font-size:18px}
+ .people-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 12px;font-size:12px;line-height:1.4}
+ .section-heading{margin:30px 0 14px}
+ .milestone-gallery{grid-template-columns:1fr 1fr;grid-template-rows:repeat(2,clamp(105px,34vw,170px));gap:5px;margin-bottom:22px}
+ .milestones{gap:20px}
+ .milestones article{grid-template-columns:52px minmax(0,1fr);gap:10px;font-size:13px}
+ .milestone-year{font-size:11px;padding:5px 4px}
+ .milestone-detail h3{font-size:14px}
+ .red-band{width:100vw;max-width:100vw;padding:16px 5%;margin:20px 0;font-size:12px;line-height:1.45;white-space:normal}
+}
