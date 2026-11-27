@@ -362,3 +362,159 @@
   .milestone-copy h3 { font-size: 14px; margin-bottom: 6px; }
   .milestone-items { font-size: 12px; padding-left: 17px; }
 }
+
+
+/* Página Sobre Nós — composição desktop conforme referência Figma.
+   As regras ficam restritas a desktop para preservar integralmente o mobile. */
+@media (min-width: 761px) {
+  .team {
+    display: grid;
+    grid-template-columns: minmax(300px, 36%) minmax(0, 64%);
+    gap: 18px;
+    align-items: stretch;
+    margin-top: 34px;
+    margin-bottom: 24px;
+  }
+  .team > img,
+  .team > .team-photo-placeholder {
+    width: 100%;
+    height: 100%;
+    min-height: 520px;
+    max-height: 560px;
+    aspect-ratio: 0.68 / 1;
+    object-fit: cover;
+    background: #eee9e6;
+  }
+  .team-mobile-content { display: none !important; }
+  .team-desktop-content {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 76px 18px 18px 22px;
+    min-width: 0;
+  }
+  .team-desktop-content h2 {
+    margin: 0 0 62px;
+    font: 700 23px/1.15 var(--serif);
+    text-transform: uppercase;
+  }
+  .team-desktop-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 44px;
+    row-gap: 70px;
+  }
+  .team-person { min-width: 0; }
+  .team-person h3 {
+    margin: 0 0 10px;
+    color: var(--red);
+    font: 500 16px/1.25 var(--sans);
+  }
+  .team-person p {
+    margin: 0;
+    color: #111;
+    font: 14px/1.35 var(--sans);
+  }
+
+  .section-heading {
+    margin: 34px 0 18px;
+    font: 700 21px/1.2 var(--serif);
+    text-transform: uppercase;
+  }
+  .milestone-gallery {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-rows: clamp(190px, 20vw, 280px) clamp(190px, 20vw, 280px);
+    gap: 12px;
+    margin: 0 0 34px;
+  }
+  .milestone-gallery-1 { grid-column: 1 / span 6; grid-row: 1; }
+  .milestone-gallery-2 { grid-column: 7 / span 6; grid-row: 1; }
+  .milestone-gallery-3 { grid-column: 1 / span 4; grid-row: 2; }
+  .milestone-gallery-4 { grid-column: 5 / span 8; grid-row: 2; }
+  .milestone-gallery-item { background: #eee9e6; overflow: hidden; }
+  .milestone-gallery-item img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .milestones {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .milestones article {
+    display: grid;
+    grid-template-columns: 76px minmax(0, 1fr);
+    column-gap: 20px;
+    align-items: start;
+    font: 13px/1.35 var(--sans);
+  }
+  .milestone-year-wrap { padding-top: 0; }
+  .milestone-year {
+    display: block;
+    width: 76px;
+    min-height: 31px;
+    padding: 6px 8px;
+    background: var(--red);
+    color: #fff;
+    text-align: center;
+    font: 700 14px/1.2 var(--serif);
+  }
+  .milestone-content { min-width: 0; }
+  .milestone-content > h3 {
+    margin: 3px 0 14px;
+    font: 700 17px/1.2 var(--serif);
+    text-transform: uppercase;
+  }
+  .milestone-two-columns {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 36px;
+    align-items: start;
+  }
+  .milestone-two-columns > p { margin: 0; }
+  .milestone-two-columns > ul {
+    margin: 0;
+    padding-left: 18px;
+  }
+  .milestone-columns {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 26px;
+    align-items: start;
+  }
+  .milestone-columns p {
+    margin: 0;
+    text-align: center;
+  }
+}
+
+/* Variação exclusiva para separar a composição desktop sem alterar o fluxo mobile atual. */
+.team-desktop-content { display: none; }
+@media (min-width: 761px) {
+  .team-desktop-content { display: flex !important; }
+  .milestones-mobile { display: none !important; }
+  .milestones-desktop { display: flex !important; }
+}
+@media (max-width: 760px) {
+  .team-desktop-content { display: none !important; }
+  .team-mobile-content { display: block !important; }
+  .milestones-desktop { display: none !important; }
+  .milestones-mobile { display: flex !important; }
+}
+
+.cms-array-actions{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.cms-array-actions button{font-size:12px;padding:5px 8px}
+.cms-array-actions button:disabled{opacity:.35;cursor:not-allowed}
+
+@media (min-width: 761px) {
+  .team-mobile-photo { display: none !important; }
+  .team-desktop-photo { display: block !important; }
+}
+@media (max-width: 760px) {
+  .team-desktop-photo { display: none !important; }
+  .team-mobile-photo { display: block; }
+}
