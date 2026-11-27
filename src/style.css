@@ -255,3 +255,110 @@
  .milestone-detail h3{font-size:14px}
  .red-band{width:100vw;max-width:100vw;padding:16px 5%;margin:20px 0;font-size:12px;line-height:1.45;white-space:normal}
 }
+
+/* Correção fiel da composição editorial de Equipe e Principais Marcos */
+.team {
+  display: grid;
+  grid-template-columns: minmax(0, 35%) minmax(0, 65%);
+  gap: clamp(22px, 3vw, 42px);
+  align-items: center;
+}
+.team > img {
+  width: 100%;
+  height: clamp(300px, 31vw, 430px);
+  object-fit: cover;
+  object-position: center;
+}
+.team-content { min-width: 0; }
+.people-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  font-size: 14px;
+  line-height: 1.45;
+}
+.people-grid p { margin: 0; }
+.people-grid b { color: var(--red); }
+.milestones {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.milestones article {
+  display: grid;
+  grid-template-columns: 104px minmax(0, 1fr);
+  gap: 22px;
+  align-items: start;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.milestone-year-wrap { display: flex; justify-content: flex-start; }
+.milestone-year {
+  display: inline-flex;
+  min-width: 76px;
+  min-height: 25px;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 9px;
+  background: var(--red);
+  color: #fff;
+  font: 700 13px var(--serif);
+  text-align: center;
+  line-height: 1.1;
+}
+.milestone-detail {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(20px, 4vw, 60px);
+  min-width: 0;
+}
+.milestone-copy h3 {
+  margin: 0 0 10px;
+  font: 700 17px var(--serif);
+  text-transform: uppercase;
+}
+.milestone-copy p { margin: 0; }
+.milestone-items {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 13px;
+  line-height: 1.45;
+}
+.milestone-items li { margin: 0 0 3px; }
+@media (max-width: 760px) {
+  .team {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+  .team > img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1.12 / 1;
+    object-fit: cover;
+  }
+  .team h2 { margin: 0 0 16px; font-size: 18px; }
+  .people-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    font-size: 11px;
+    line-height: 1.35;
+  }
+  .section-heading { margin: 30px 0 14px; }
+  .milestones { gap: 22px; }
+  .milestones article {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .milestone-year { min-width: 54px; min-height: 23px; font-size: 11px; }
+  .milestone-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+  .milestone-copy h3 { font-size: 14px; margin-bottom: 6px; }
+  .milestone-items { font-size: 12px; padding-left: 17px; }
+}
