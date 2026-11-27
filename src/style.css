@@ -128,16 +128,39 @@
 .memory-grid audio{display:block;width:100%;margin-top:12px}
 
 
-/* Marca oficial CCJT: usa o SVG original e enquadra apenas a área vazia da prancheta A4. */
-.official-logo-crop{position:relative;display:block;overflow:hidden;isolation:isolate}
-.official-logo-crop>img{position:absolute;left:50%;top:50%;height:173.1%;width:auto;max-width:none;transform:translate(-50%,-50%);object-fit:contain}
-.big-logo.official-logo-crop{border:0;padding:0}
-.wp-login-brand{display:flex;flex-direction:column;align-items:center;gap:10px;font-size:0}
+
+/* Aplicação da marca oficial: PNG original presente em public/assets. */
+.official-logo-crop{
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  isolation:isolate;
+}
+.official-logo-crop>img{
+  position:static;
+  display:block;
+  width:100%;
+  height:100%;
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+  object-position:center;
+  transform:none;
+}
+.brand.official-logo-crop{width:64px;height:64px;flex:0 0 64px}
+.big-logo.official-logo-crop{
+  width:min(100%,430px);
+  height:216px;
+  flex:0 0 auto;
+  border:0;
+  padding:0;
+}
 .wp-login-logo{width:126px;height:126px}
-.wp-login-brand>span{display:block;font:600 10px Arial,sans-serif;letter-spacing:2px;color:#2271b1;margin:0}
-.wp-adminbar-brand{display:flex;align-items:center;gap:10px;font-weight:600}
 .wp-adminbar-logo{width:27px;height:27px;flex:0 0 27px}
-.cms-logo{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
 .cms-logo-mark{width:88px;height:88px;flex:0 0 88px}
-.cms-logo small{font:600 10px var(--sans);letter-spacing:1.4px;color:#e7a63e}
-@media(max-width:760px){.big-logo.official-logo-crop{height:190px;width:min(100%,360px)}}
+@media(max-width:760px){
+  .brand.official-logo-crop{width:48px;height:48px;flex-basis:48px}
+  .big-logo.official-logo-crop{width:min(100%,360px);height:190px}
+}
