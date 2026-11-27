@@ -190,3 +190,31 @@
  .history-copy-bottom{padding-top:18px;padding-bottom:20px}
  .history-section>.red-band{margin:0;padding:13px 5%;font-size:12px;line-height:1.4;width:100%;}
 }
+
+/* Ajuste de enquadramento da seção Nossa História para corresponder ao protótipo Figma */
+.history-main-photo .wide-photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2.35 / 1;
+  object-fit: cover;
+  object-position: center 42%;
+}
+.photo-story img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2.4 / 1;
+  object-fit: cover;
+  object-position: center 38%;
+}
+@media (max-width: 760px) {
+  .history-main-photo .wide-photo {
+    aspect-ratio: 1.72 / 1;
+    object-position: center 40%;
+  }
+  .photo-story img {
+    aspect-ratio: 1.9 / 1;
+    object-position: center 38%;
+  }
+}
