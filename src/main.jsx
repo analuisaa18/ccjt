@@ -49,7 +49,19 @@ function App(){
  const notify=t=>{setToast(t);setTimeout(()=>setToast(''),4000)};
  useEffect(()=>{const r=document.documentElement;r.style.setProperty('--red',data.theme.primary);r.style.setProperty('--gold',data.theme.gold);r.style.setProperty('--paper',data.theme.paper);r.style.setProperty('--ink',data.theme.ink);r.style.setProperty('--serif',`'${data.theme.headingFont}', Georgia, serif`);r.style.setProperty('--sans',`'${data.theme.bodyFont}', Arial, sans-serif`)},[data.theme]);
  useEffect(()=>{const f=()=>{setPage(location.pathname.replace(/\/$/,'')==='/admin'?'admin':(location.hash.slice(1)||'sobre'));window.scrollTo(0,0)};addEventListener('hashchange',f);addEventListener('popstate',f);return()=>{removeEventListener('hashchange',f);removeEventListener('popstate',f)}},[]);
- useEffect(()=>{if(!supabase)return;supabase.auth.getSession().then(({data})=>setSession(data.session));const{data:s}=supabase.auth.onAuthStateChange((_e,v)=>setSession(v));supabase.from('site_content').select('content').eq('id','main').maybeSingle().then(({data:d})=>{if(d?.content)setData(merge(DEFAULT,d.content));supabase.from('events').select('*').eq('status','published').order('event_date').then(({data:d,error})=>{if(!error)setEvents(d||[])});supabase.from('memories').select('*').eq('status','approved').order('created_at',{ascending:false}).then(({data:d})=>setMemories(d||[]));return()=>s.subscription.unsubscribe()},[]);
+  useEffect(()=>{
+   if(!supabase)return;
+   supabase.auth.getSession().then(({data})=>setSession(data.session));
+   const {data:authListener}=supabase.auth.onAuthStateChange((_event,session)=>setSession(session));
+   supabase.from('site_content').select('content').eq('id','main').maybeSingle().then(({data:contentRow})=>{
+    if(contentRow?.content)setData(merge(DEFAULT,contentRow.content));
+   });
+   supabase.from('events').select('*').eq('status','published').order('event_date').then(({data:rows,error})=>{
+    if(!error)setEvents(rows||[]);
+   });
+   supabase.from('memories').select('*').eq('status','approved').order('created_at',{ascending:false}).then(({data:rows})=>setMemories(rows||[]));
+   return ()=>authListener.subscription.unsubscribe();
+  },[]);
  const go=id=>{setPage(id);if(id==='admin'){history.pushState({},'', '/admin')}else{history.pushState({},'', id==='sobre'?'/':'/#'+id)}setMenu(false);window.scrollTo({top:0,behavior:'smooth'})};
  const update=(path,value)=>setData(old=>{const n=clone(old);let o=n;path.slice(0,-1).forEach(k=>o=o[k]);o[path.at(-1)]=value;return n});
  const save=async()=>{if(!supabase){notify('Configure o Supabase para salvar alterações permanentemente.');return}const{error}=await supabase.from('site_content').upsert({id:'main',content:data,updated_at:new Date().toISOString()});notify(error?'Erro ao salvar: '+error.message:'Alterações publicadas no site!')};
